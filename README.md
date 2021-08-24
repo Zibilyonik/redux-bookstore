@@ -43,7 +43,7 @@ TBA
 
 ## Contributing
 
-You're welcome to inform me about any issues you may have found by checking the [issues](/issues) page.
+You're welcome to inform me about any issues you may have found by checking the [issues](../../issues) page.
 You can also let me know if you have any feature requests via the links you can find on the [Contributors](#Contributors) section.
 
 ## Show Your Support
