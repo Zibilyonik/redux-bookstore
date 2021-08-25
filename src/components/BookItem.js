@@ -5,9 +5,10 @@ const BookItem = (props) => {
   const { title, key } = props;
 
   return (
-    <div>
+    <div id={`Book-${key}`}>
       <h1>{title || ''}</h1>
       <h2>{key || ''}</h2>
+      <button type="button" className="remove-button" name="removeBook">Remove Book</button>
     </div>
   );
 };

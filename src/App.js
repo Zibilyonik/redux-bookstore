@@ -4,6 +4,7 @@ import './App.css';
 import Bookstore from './components/Bookstore';
 import Categories from './components/Categories';
 import Navbar from './components/Navbar';
+import CreateNewBook from './components/CreateNewBook';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
+          <CreateNewBook />
           <Bookstore />
         </Route>
         <Route path="/categories">
