@@ -1,30 +1,28 @@
 const ADD_BOOK = 'redux-bookstore/src/redux/books/ADD_BOOK';
 const REMOVE_BOOK = 'redux-bookstore/src/redux/books/REMOVE_BOOK';
-const initialState = {
-  books: [],
-};
+const initialState = [];
 
 export const addBook = (payload) => ({
   type: ADD_BOOK,
   payload,
 });
-export const removeBook = (payload) => ({
+export const removeBook = (id) => ({
   type: REMOVE_BOOK,
-  payload,
+  id,
 });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_BOOK: return {
+    case ADD_BOOK: return [
       ...state,
-      books: [...state.books, action.payload],
-
-    };
+      {
+        title: action.payload.title,
+        id: action.payload.id,
+        author: action.payload.author,
+      },
+    ];
     case REMOVE_BOOK:
-      return {
-        ...state,
-        books: state.books.filter((book) => book.key !== action.payload.key),
-      };
+      return [...state.filter((book) => book.id !== action.id)];
     default:
       return state;
   }

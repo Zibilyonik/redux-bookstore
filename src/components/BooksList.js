@@ -1,23 +1,29 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import BookItem from './BookItem';
 
 const BooksList = () => {
-  const books = [
-    { id: 1, title: 'Book1', author: 'Adam' },
-    { id: 2, title: 'Book2', author: 'Bethany' },
-    { id: 3, title: 'Book3', author: 'Cain' },
-  ];
+  const books = useSelector((state) => state.booksReducer);
   return (
     <ul>
       {books.map((book) => (
         <BookItem
           key={book.id}
+          id={book.id}
           title={book.title}
           author={book.author}
         />
       ))}
     </ul>
   );
+};
+
+BooksList.defaultProps = {
+  books: [{
+    title: 'Books',
+    author: 'Go Here',
+    id: 'Template ID',
+  }],
 };
 
 export default BooksList;
