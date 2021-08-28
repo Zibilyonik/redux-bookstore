@@ -19,12 +19,12 @@ const BookItem = (props) => {
     <div id={item_id} className="col-11 mx-auto border my-2 rounded py-4 px-4 book-card-style row ps-0">
       <div className="col-6">
         <h4 className="category-display-style">{category || ''}</h4>
-        <h1 className="title-display-style">{title || ''}</h1>
-        <p className="author-display-style">Author</p>
+        <h1 className="title-display-style black">{title || ''}</h1>
+        <p className="author-display-style blue">Author</p>
         <div className="mt-4">
-          <p className="remove-button-style d-inline pe-3 border-end ">Comments</p>
-          <button type="button" className="remove-button-style mx-2 border-0" name="removeBook" onClick={handleClick}>Remove Book</button>
-          <p className="remove-button-style d-inline border-start ps-3">Edit</p>
+          <p className="remove-button-style d-inline pe-3 border-end blue">Comments</p>
+          <button type="button" className="remove-button-style blue mx-2 border-0" name="removeBook" onClick={handleClick}>Remove Book</button>
+          <p className="remove-button-style d-inline border-start ps-3 blue">Edit</p>
         </div>
       </div>
       <div className="col-1 mt-3 p-0">
@@ -32,7 +32,7 @@ const BookItem = (props) => {
       </div>
       <div className="col-2 pt-3 p-0 border-end">
         <h1 className="percentage-style">0%</h1>
-        <h4 className="completed-style">Completed</h4>
+        <h4 className="completed-style black">Completed</h4>
       </div>
       <div className="col-3 pt-3 p-0 ps-5">
         <h4 className="completed-style mb-0">CURRENT CHAPTER</h4>
