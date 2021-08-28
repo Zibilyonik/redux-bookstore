@@ -1,20 +1,22 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+import { removeBookItem } from '../redux/reduxapi';
 
 const BookItem = (props) => {
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
-    dispatch(removeBook(e.target.parentNode.id));
+    dispatch(removeBookItem(e.target.parentNode.id));
+    e.target.parentNode.remove();
   };
-  const { title, id, author } = props;
+  const { title, item_id, category } = props;
 
   return (
-    <div id={id}>
+    <div id={item_id}>
       <h1>{title || ''}</h1>
-      <h2>{author || ''}</h2>
+      <h2>{category || ''}</h2>
       <button type="button" className="remove-button" name="removeBook" onClick={handleClick}>Remove Book</button>
     </div>
   );
@@ -22,7 +24,7 @@ const BookItem = (props) => {
 
 BookItem.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  item_id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 export default BookItem;
