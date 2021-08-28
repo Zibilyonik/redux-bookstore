@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import './CreateNewBook.css';
 import { addBook } from '../redux/books/books';
 import { APP_URL } from '../CallAPI';
 
@@ -27,7 +28,8 @@ const CreateNewBook = () => {
     return newBook;
   };
   return (
-    <form className="form-container">
+    <form className="form-container py-4 px-4 mx-4">
+      <h3 className="book-form-title-style">ADD NEW BOOK</h3>
       <input
         id="TitleInput"
         type="text"
@@ -39,12 +41,12 @@ const CreateNewBook = () => {
       <input
         id="CategoryInput"
         type="text"
-        className="input-text"
+        className="input-text w-25 me-3"
         placeholder="Book Category"
         name="Category"
         onChange={(e) => setCategory(e.target.value)}
       />
-      <button type="button" className="input-submit" onClick={handleSubmit}>Submit</button>
+      <button type="button" className="input-submit btn btn-primary" onClick={handleSubmit}>Submit</button>
     </form>
   );
 };
