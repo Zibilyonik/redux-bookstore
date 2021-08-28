@@ -1,0 +1,11 @@
+body {
+  min-height: 89.625rem;
+  padding: 3rem 3.75rem 7.688rem 6.25rem;
+  background-color: #f5f6fa !important;
+}
+
+.container-style {
+  margin: 6.25rem;
+  max-width: 90%;
+  background-color: #fafafa;
+}
