@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import './Books.css';
 import BookItem from './BookItem';
 import { setList } from '../redux/books/books';
 import { APP_URL } from '../CallAPI';
@@ -17,16 +18,18 @@ const BooksList = () => {
   }, []);
 
   return (
-    <ul>
-      {books.map((book) => (
-        <BookItem
-          key={book.item_id}
-          item_id={book.item_id}
-          title={book.title}
-          category={book.category}
-        />
-      ))}
-    </ul>
+    <div className="mx-auto books-container-style border-bottom">
+      <ul className="row p-0">
+        {books.map((book) => (
+          <BookItem
+            key={book.item_id}
+            item_id={book.item_id}
+            title={book.title}
+            category={book.category}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

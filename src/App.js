@@ -9,18 +9,18 @@ import CreateNewBook from './components/CreateNewBook';
 
 function App() {
   return (
-    <>
+    <div className="container-style mx-auto">
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <CreateNewBook />
           <BooksList />
+          <CreateNewBook />
         </Route>
         <Route path="/categories">
           <Categories />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 
