@@ -5,15 +5,13 @@ const getBooks = async () => {
   try {
     const response = await axios.get(APP_URL);
     const books = response.data;
-    console.log(books);
     return books;
   } catch (e) {
-    console.error(e);
     return [];
   }
 };
 
-const postBook = async ({ book }) => {
+const postBook = async (book) => {
   try {
     const response = await axios.post(APP_URL, {
       item_id: book.id,
@@ -22,21 +20,21 @@ const postBook = async ({ book }) => {
     });
     return response.data;
   } catch (e) {
-    console.error(e);
     return e;
   }
 };
 
 const removeBook = async (id) => {
   try {
-    const response = await axios.post(`${APP_URL}/${id}`, {
+    const response = await axios.delete(`${APP_URL}/${id}`, {
       item_id: id,
     });
     return response.data;
   } catch (e) {
-    console.error(e);
     return e;
   }
 };
 
-export { getBooks, postBook, removeBook };
+export {
+  getBooks, postBook, removeBook, APP_URL,
+};

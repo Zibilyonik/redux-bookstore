@@ -1,21 +1,30 @@
-import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { addBook } from '../redux/books/books';
+import { APP_URL } from '../CallAPI';
 
 const CreateNewBook = () => {
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
   const dispatch = useDispatch();
-  const submitBookToStore = (title, author) => {
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-    };
-    return newBook;
+  const submitBookToStore = async (book) => {
+    try {
+      await axios.post(APP_URL, book);
+      dispatch(addBook(book));
+      return book;
+    } catch (e) {
+      return e;
+    }
   };
-  const handleSubmit = (e) => {
-    const titleInput = e.target.parentNode.firstChild;
-    dispatch(addBook(submitBookToStore(titleInput.value, titleInput.nextSibling.value)));
+  const handleSubmit = () => {
+    const newBook = {
+      item_id: Date.now(),
+      title,
+      category,
+    };
+    submitBookToStore(newBook);
+    return newBook;
   };
   return (
     <form className="form-container">
@@ -23,15 +32,17 @@ const CreateNewBook = () => {
         id="TitleInput"
         type="text"
         className="input-text"
-        placeholder="Book Title:"
+        placeholder="Book Title"
         name="title"
+        onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        id="AuthorInput"
+        id="CategoryInput"
         type="text"
         className="input-text"
-        placeholder="Book Author:"
-        name="author"
+        placeholder="Book Category"
+        name="Category"
+        onChange={(e) => setCategory(e.target.value)}
       />
       <button type="button" className="input-submit" onClick={handleSubmit}>Submit</button>
     </form>
